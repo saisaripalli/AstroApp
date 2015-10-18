@@ -1,0 +1,59 @@
+<?php
+/**
+ * @link      http://github.com/kunjara/jyotish for the canonical source repository
+ * @license   GNU General Public License version 2 or later
+ */
+
+namespace AstroApp\Bhava\Object;
+
+use AstroApp\Base\Object;
+
+/**
+ * Parent class for bhava objects.
+ *
+ * @author Kunjara Lila das <vladya108@gmail.com>
+ */
+class BhavaObject extends Object {
+    
+    use BhavaEnvironment;
+    
+    /**
+     * Object type
+     * 
+     * @var string
+     */
+    protected $objectType = 'bhava';
+
+    /**
+     * Devanagari bhava title in transliteration.
+     * 
+     * @var array
+     * @see Jyotish\Alphabet\Devanagari
+     */
+    protected $bhavaTranslit;
+
+    /**
+     * Indications of bhava.
+     * 
+     * @var array
+     * @see Maharishi Parashara. Brihat Parashara Hora Shastra. Chapter 11, Verse 2-13.
+     */
+    protected $bhavaKarakatva = [];
+
+    /**
+     * Purushartha of bhava.
+     * 
+     * @var string
+     */
+    protected $bhavaPurushartha;
+
+    /**
+     * Constructor
+     * 
+     * @param null|array $options Options to set
+     */
+    public function __construct($options)
+    {
+        parent::__construct($options);
+    }
+}
