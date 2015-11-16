@@ -60,10 +60,23 @@ class DashaUtil {
         $type = Dasha::TYPE_VIMSHOTTARI;
         $periodKey = 'now';
         $dashaPeriod = array(Dasha::NESTING_1 => 'mahadasha', Dasha::NESTING_2 => 'antardasha', Dasha::NESTING_3 => 'pratyantardasha');
-        $dataObject->calcDasha($type, $periodKey, $dashaPeriod);
+        $dataInstance = $dataObject->calcDasha($type, $periodKey, $dashaPeriod);
+        return $dataInstance->getDataArray();                
     }    
+    
+    public function printDasha(array $dataArray){
+        echo ' size of vimshottari data array: ' . count($dataArray, COUNT_RECURSIVE) . '<br>';
+        foreach ($dataArray as $key => $value) {
+          if(strcasecmp($value,Data::BLOCK_DASHA) == 0 && array_key_exists(Data::BLOCK_DASHA, $dataArray)){
+              echo ' printing';
+          }    
+        }
+        
+    }
 }
 
  $dashaUtil = new DashaUtil();
- $dashaUtil->calcPeriod();
- echo 'done computation';
+ $dataArray = $dashaUtil->calcPeriod();
+ echo 'done computation'.'<br>';
+ echo 'now print dasha'.'<br>';
+ $dashaUtil->printDasha($dataArray);
