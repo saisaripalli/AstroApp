@@ -4,7 +4,7 @@
  * @license   GNU General Public License version 2 or later
  */
 
-namespace Jyotish\Ganita;
+namespace AstroApp\Ganita;
 
 use AstroApp\Base\Locality;
 use AstroApp\Ganita\Math;

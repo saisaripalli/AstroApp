@@ -20,8 +20,8 @@ use DateInterval;
 abstract class AbstractDasha
 {
     use \AstroApp\Base\Traits\DataTrait;
-    use AstroApp\Base\Traits\GetTrait;
-    use AstroApp\Base\Traits\OptionTrait;
+    use \AstroApp\Base\Traits\GetTrait;
+    use \AstroApp\Base\Traits\OptionTrait;
     
     /**
      * Options of dasha object.
@@ -164,7 +164,7 @@ abstract class AbstractDasha
             $duration = round($periodData['duration'] * $this->durationGraha[$graha] / $this->durationTotal);
             
             $periodData['periods'][$graha]['nesting'] = $nesting;
-            $periodData['periods'][$graha]['type'] = constant('Jyotish\Dasha\Dasha::NESTING_'.$nesting);
+            $periodData['periods'][$graha]['type'] = constant('AstroApp\Dasha\Dasha::NESTING_'.$nesting);
             $periodData['periods'][$graha]['key'] = $periodData['key'].$graha;
             $periodData['periods'][$graha]['duration'] = (int) $duration;
             $periodData['periods'][$graha]['start'] = $this->temp['DateTime']->format(Time::FORMAT_DATETIME);
@@ -174,6 +174,7 @@ abstract class AbstractDasha
             $periodData['periods'][$graha]['end'] = $this->temp['DateTime']->format(Time::FORMAT_DATETIME);
             $DateTimeEnd = clone($this->temp['DateTime']);
             
+             $subperiodKey = '';
             // Choose period with the specified key
             if ($periodKey == 'now') {
                 if (!($DateTimeStart < $this->temp['DateTimeNow'] && $DateTimeEnd > $this->temp['DateTimeNow'])) {

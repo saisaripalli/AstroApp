@@ -152,10 +152,10 @@ class Nakshatra
     public static function getInstance($key, array $options = null)
     {
         if (!array_key_exists($key, self::$nakshatra)) {
-            throw new \Jyotish\Panchanga\Exception\InvalidArgumentException("Nakshatra with the key '$key' does not exist.");
+            throw new \AstroApp\Panchanga\Exception\InvalidArgumentException("Nakshatra with the key '$key' does not exist.");
         }
 
-        $nakshatraClass = 'Jyotish\\Panchanga\\Nakshatra\\Object\\N' . $key;
+        $nakshatraClass = 'AstroApp\\Panchanga\\Nakshatra\\Object\\N' . $key;
         $nakshatraObject = new $nakshatraClass($options);
 
         return $nakshatraObject;
@@ -192,7 +192,7 @@ class Nakshatra
      */
     public static function listNakshatraNavatara($nakshatraKey) {
         if (!array_key_exists($nakshatraKey, self::listNakshatra())) {
-            throw new \Jyotish\Panchanga\Exception\InvalidArgumentException("Nakshatra with the key '$nakshatraKey' does not exist.");
+            throw new \AstroApp\Panchanga\Exception\InvalidArgumentException("Nakshatra with the key '$nakshatraKey' does not exist.");
         }
         
         $nakshatas = Math::shiftArray(self::listNakshatra(), $nakshatraKey, true);

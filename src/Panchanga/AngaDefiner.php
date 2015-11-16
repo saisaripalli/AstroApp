@@ -38,7 +38,7 @@ class AngaDefiner
     /**
      * Constructor
      * 
-     * @param \Jyotish\Base\Data $Data
+     * @param \AstroApp\Base\Data $Data
      */
     public function __construct(\AstroApp\Base\Data $Data)
     {
