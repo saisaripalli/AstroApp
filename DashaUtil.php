@@ -19,7 +19,8 @@ use AstroApp\Dasha\Object\Vimshottari;
 
 /**
  * Description of DashaUtil
- *
+ * There can be lot improvement in structure
+ * and it can be made more loosely coupled, modular
  * @author sai
  */
 class DashaUtil {
@@ -54,6 +55,10 @@ class DashaUtil {
         return $dataObject;
     }
 
+    /**
+     * 
+     * @return array $dataArray
+     */
     public function calcPeriod() {
         //$dashaObject = $this->getDashaInstance();
         $dataObject = $this->getDataInstance();
@@ -64,13 +69,21 @@ class DashaUtil {
         return $dataInstance->getDataArray();                
     }    
     
+    /**
+     * This $dataArray Object has complete information about Planet
+     * positions, period and Nakshatra for given time,date and place
+     * of birth.
+     * @param array $dataArray
+     */
     public function printDasha(array $dataArray){
         echo ' size of vimshottari data array: ' . count($dataArray, COUNT_RECURSIVE) . '<br>';
-        foreach ($dataArray as $key => $value) {
-          if(strcasecmp($value,Data::BLOCK_DASHA) == 0 && array_key_exists(Data::BLOCK_DASHA, $dataArray)){
-              echo ' printing';
-          }    
-        }
+        var_dump($dataArray[Data::BLOCK_DASHA][Dasha::TYPE_VIMSHOTTARI]['periods']);
+        //echo $dataArray['dasha']['vimshottari']['mahadasha'];
+//        foreach ($dataArray as $key => $value) {
+//          if(strcasecmp($value,Data::BLOCK_DASHA) == 0){
+//              var_dump($dataArray[Data::BLOCK_DASHA]);
+//          }    
+//        }
         
     }
 }
